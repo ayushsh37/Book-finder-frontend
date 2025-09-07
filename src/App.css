@@ -1,0 +1,169 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8fbff, #eef3f7);
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: white;
+  background: linear-gradient(90deg, #3498db, #8e44ad);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+/* 🔹 Search Box */
+.search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-box input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.search-box input:focus {
+  border: 1px solid #3498db;
+}
+
+.search-box button {
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.search-box button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #2980b9, #27ae60);
+}
+
+/* 🔹 Book List */
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.book-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  border-top: 5px solid #3498db;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  background: #f9fcff;
+}
+
+.book-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.no-image {
+  width: 100%;
+  height: 220px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: #555;
+}
+
+.book-card h3 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+  color: #2c3e50;
+}
+
+.book-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 2px 0;
+}
+
+/* 🔹 Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
+  position: relative;
+  box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.25);
+  border-top: 6px solid #8e44ad;
+}
+
+.modal-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.modal-content h2 {
+  color: #8e44ad;
+}
+
+.modal-content strong {
+  color: #3498db;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #e74c3c;
+}
