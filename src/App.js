@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+// ✅ Use environment variable (Vercel/Render) or fallback to localhost
+const API_BASE = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
 function App() {
   const [query, setQuery] = useState("");
   const [books, setBooks] = useState([]);
@@ -11,7 +14,7 @@ function App() {
   const searchBooks = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/search?query=${encodeURIComponent(query)}`
+        `${API_BASE}/api/search?query=${encodeURIComponent(query)}`
       );
       console.log("Books fetched:", response.data);
       setBooks(response.data);
@@ -27,9 +30,7 @@ function App() {
       const workId = key.replace("/works/", "");
       console.log("Fetching details for workId:", workId);
 
-      const response = await axios.get(
-        `http://localhost:5000/api/book/${workId}`
-      );
+      const response = await axios.get(`${API_BASE}/api/book/${workId}`);
       console.log("Book details received:", response.data);
 
       setSelectedBook(response.data);
@@ -98,7 +99,9 @@ function App() {
 
             <p>
               <strong>Description:</strong>{" "}
-              {selectedBook.description || "No description available"}
+              {selectedBook.description?.value ||
+                selectedBook.description ||
+                "No description available"}
             </p>
 
             {selectedBook.subjects?.length > 0 && (
@@ -111,7 +114,7 @@ function App() {
             {selectedBook.created && (
               <p>
                 <strong>Created:</strong>{" "}
-                {new Date(selectedBook.created).toDateString()}
+                {new Date(selectedBook.created.value).toDateString()}
               </p>
             )}
           </div>
